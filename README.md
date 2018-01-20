@@ -7,6 +7,9 @@ https://www.geeksforgeeks.org/getting-started-with-opengl/
 # Installing on Unix-like (linux mint) systems
 sudo apt-get install freeglut3-dev
 
+# Command to run setup script.
+bash ./install.sh
+
 # Upon compiling, make sure to link the proper libraries
 gcc filename.c -lGL -lGLU -lglut
 where filename.c is the name of the file
