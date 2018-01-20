@@ -42,8 +42,11 @@ CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GL_FLAGS)
 #########################################################
 
 $(TARGET):
-	$(CC) $(TARGET).cpp $(CC_FLAGS) -o ./bin/executable
-	
+	$(CC) $(TARGET).cpp $(CC_FLAGS) -o ./bin/executable.bin
+
+tutorial1:
+	$(CC) tutorial1.cpp $(CC_FLAGS) -o ./bin/tutorial1.bin
+
 clean:
-	rm -f *.o *.exe driver
+	rm -f *.o *.exe driver ./bin/*.bin
 
