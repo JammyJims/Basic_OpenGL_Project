@@ -36,16 +36,20 @@ CC_FLAGS 	:= -g
 
 # using OpenGL compilation flags
 GL_FLAGS := -lGL -lGLU -lglut 
+GLFW_FLAGS := -L$(LIBDIR) -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi
 
 # all compilation flags
-CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GL_FLAGS)
+CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GLFW_FLAGS)
 #########################################################
 
 $(TARGET):
 	$(CC) $(TARGET).cpp $(CC_FLAGS) -o ./bin/executable.bin
 
-tutorial1:
-	$(CC) tutorial1.cpp $(CC_FLAGS) -o ./bin/tutorial1.bin
+glad:
+	$(CC) -c src/glad.c $(CC_FLAGS) -o glad.o
+
+test:
+	$(CC) glad.o test.cpp $(CC_FLAGS) -o ./bin/test.bin 
 
 clean:
 	rm -f *.o *.exe driver ./bin/*.bin
