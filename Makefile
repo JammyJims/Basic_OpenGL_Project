@@ -1,17 +1,17 @@
-#########################################################
-# 
-# This is a make file that uses variable names to compile
-# all of my files. Note that the order of the variable
-# declarations matter so make sure to define directories 
-# then compiled objects, then compilation flags before
-# running the compilation commands. Do not use variable 
-# names such as "PATH" as they will overwrite the default
-# environment variables  
-# 
-#########################################################
+###########################################################
+# 														  #
+# This is a make file that uses variable names to compile #
+# all of my files. Note that the order of the variable    #
+# declarations matter so make sure to define directories  #
+# then compiled objects, then compilation flags before    #
+# running the compilation commands. Do not use variable   #
+# names such as "PATH" as they will overwrite the default #
+# environment variables                                   #
+#                                                         #
+###########################################################
 
 # Assignments
-#########################################################
+###########################################################
 
 # Directory variables
 SRCDIR 		:= src/
