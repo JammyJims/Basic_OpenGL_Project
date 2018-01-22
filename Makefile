@@ -36,7 +36,7 @@ CC_FLAGS 	:= -g
 
 # using OpenGL compilation flags
 GL_FLAGS := -lGL -lGLU -lglut 
-GLFW_FLAGS := -L$(LIBDIR) -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi
+GLFW_FLAGS := -L$(LIBDIR) -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 
 # all compilation flags
 CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GLFW_FLAGS)

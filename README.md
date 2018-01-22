@@ -17,6 +17,3 @@ with which this program is saved.
 
 # default header files found at
 /usr/include/GL
-
-# Interesting opengl tutorial 
-http://www.opengl-tutorial.org/beginners-tutorials/ 
