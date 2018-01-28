@@ -51,6 +51,10 @@ glad:
 test:
 	$(CC) glad.o test.cpp $(CC_FLAGS) -o ./bin/test.bin 
 
+window:
+	$(CC) glad.o HelloWindow.cpp $(CC_FLAGS) -o ./bin/HelloWindow.bin
+
+
 clean:
 	rm -f *.o *.exe driver ./bin/*.bin
 
