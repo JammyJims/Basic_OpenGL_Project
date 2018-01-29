@@ -1,0 +1,10 @@
+# Errors
+This file is to describe the errors I have run into at some point or another. This document is just a reminder as to what to do if I have already encountered an error and had found a fix.
+
+## Loose Object
+error message -> fatal: loose object
+source: https://stackoverflow.com/questions/4254389/git-corrupt-loose-object 
+run the two commands below:
+find .git/objects/ -size 0 -exec rm -f {} \;
+git fetch origin
+
