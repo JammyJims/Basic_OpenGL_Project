@@ -1,6 +1,6 @@
 # my ignores
 .vscode/
-
+bin/*.bin
 # Prerequisites
 *.d
 
