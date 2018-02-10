@@ -19,6 +19,7 @@ BUILDDIR 	:= build/
 INCLUDEDIR 	:= include/
 LIBDIR 		:= lib/
 BINDIR 		:= bin/
+OBJDIR		:= objects/
 TESTSDIR 	:= tests/
 GTESTDIR 	:= googletest/googletest/include/
 
@@ -39,22 +40,21 @@ GL_FLAGS := -lGL -lGLU -lglut
 GLFW_FLAGS := -L$(LIBDIR) -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 
 # all compilation flags
-CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GLFW_FLAGS)
+CC_FLAGS := -Wall -Wextra -I $(INCLUDEDIR) $(GLFW_FLAGS) -L ./objects/
 #########################################################
 
 $(TARGET):
-	$(CC) $(TARGET).cpp $(CC_FLAGS) -o ./bin/executable.bin
+	$(CC) $(TARGET).cpp $(CC_FLAGS) -o $(BINDIR)executable.bin
 
 glad:
-	$(CC) -c src/glad.c $(CC_FLAGS) -o glad.o
+	$(CC) -c $(SRCDIR)glad.c $(CC_FLAGS) -o $(OBJDIR)glad.o
 
-test:
-	$(CC) glad.o test.cpp $(CC_FLAGS) -o ./bin/test.bin 
+test: glad
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)test.cpp $(CC_FLAGS) -o $(BINDIR)test.bin 
 
-window:
-	$(CC) glad.o HelloWindow.cpp $(CC_FLAGS) -o ./bin/HelloWindow.bin
-
+window: glad
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin
 
 clean:
-	rm -f *.o *.exe driver ./bin/*.bin
+	rm -f $(OBJDIR)*.o *.exe driver $(BINDIR)*.bin
 
