@@ -43,7 +43,7 @@ int main()
         return -1;
     }
 
-    // calculate vertices
+    // create vertices and bind them to opengl
     float vertices[6] = {
          0.5,  0.5,
         -0.5,  0.5,
@@ -53,6 +53,13 @@ int main()
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, 6, &vertices, GL_STATIC_DRAW );
+
+    // create shader program
+    unsigned int shaderProgram;
+    shaderProgram = glCreateProgram();
+    glAttachShader(shaderProgram, vertexShader);
+    glAttachShader(shaderProgram, fragmentShader);
+    glLinkProgram(shaderProgram);
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))

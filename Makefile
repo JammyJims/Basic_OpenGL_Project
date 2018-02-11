@@ -55,6 +55,12 @@ test: glad
 window: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin
 
+triangle: glad
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloTriangle.cpp $(CC_FLAGS) -o $(BINDIR)HelloTriangle.bin
+
+strings:
+	$(CC) $(TESTSDIR)strings_and_char_ptrs.cpp -o $()strings_and_char_ptrs
+
 clean:
-	rm -f $(OBJDIR)*.o *.exe driver $(BINDIR)*.bin
+	rm -f $(OBJDIR)*.o *.o *.exe driver $(BINDIR)*.bin
 
