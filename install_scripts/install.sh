@@ -14,3 +14,6 @@ sudo apt-get install libgl1-mesa-dev -y
 # building GLFW with cmake
 sudo apt install cmake -y
 sudo apt install xorg-dev -y
+
+# Visual Studio Code debugger
+sudo apt install xterm -y

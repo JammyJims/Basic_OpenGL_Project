@@ -56,7 +56,7 @@ window: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin
 
 triangle: glad
-	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloTriangle.cpp $(CC_FLAGS) -o $(BINDIR)HelloTriangle.bin
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloTriangle.cpp $(CC_FLAGS) -o $(BINDIR)HelloTriangle.bin -g
 
 strings:
 	$(CC) $(TESTSDIR)strings_and_char_ptrs.cpp -o $()strings_and_char_ptrs
