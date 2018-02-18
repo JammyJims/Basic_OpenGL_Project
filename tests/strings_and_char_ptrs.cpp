@@ -36,4 +36,9 @@ int main() {
     cout << "6th string element is = " << string4[6] << endl;
     cout << "below is string1:" << endl;
     print (string1);
+    char buffer[256] = "hello, temp buffer in place";
+    char message[16];
+    cin >> message;
+    cout << message << endl;
+
 }

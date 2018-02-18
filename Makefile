@@ -59,7 +59,7 @@ triangle: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloTriangle.cpp $(CC_FLAGS) -o $(BINDIR)HelloTriangle.bin -g
 
 strings:
-	$(CC) $(TESTSDIR)strings_and_char_ptrs.cpp -o $()strings_and_char_ptrs
+	$(CC) $(TESTSDIR)strings_and_char_ptrs.cpp -o $()strings_and_char_ptrs -g
 
 clean:
 	rm -f $(OBJDIR)*.o *.o *.exe driver $(BINDIR)*.bin
