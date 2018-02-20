@@ -56,7 +56,7 @@ myWindow: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)myWindow.cpp $(CC_FLAGS) -o ./myWindow.out
 
 window: glad
-	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin -g
 
 triangle: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloTriangle.cpp $(CC_FLAGS) -o $(BINDIR)HelloTriangle.bin -g

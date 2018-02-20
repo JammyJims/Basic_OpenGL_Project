@@ -51,8 +51,8 @@ int main() {
     };
     unsigned int buffer;
     glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer)
-    glBufferData(buffer, sizeof(buffer), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(buffer, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // render loop
     while (!glfwWindowShouldClose(window)) {
@@ -73,6 +73,6 @@ void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
-void framebuffer_size_callback (int width, int height) {
+void framebuffer_size_callback (GLFWwindow *window, int width, int height) {
     glViewport(0,0,width,height);
 }
