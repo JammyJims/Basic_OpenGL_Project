@@ -27,7 +27,7 @@ GTESTDIR 	:= googletest/googletest/include/
 OBJS := main.o Logbook.o Entry.o
 
 # Compilation flags
-CC 			:= g++
+CC 			:= g++ -std=c++11
 TARGET 		:= bin/driver
 CC_FLAGS 	:= -g 
 
@@ -52,6 +52,9 @@ glad:
 test: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)test.cpp $(CC_FLAGS) -o $(BINDIR)test.bin 
 
+myWindow: glad
+	$(CC) $(OBJDIR)glad.o $(SRCDIR)myWindow.cpp $(CC_FLAGS) -o ./myWindow.out
+
 window: glad
 	$(CC) $(OBJDIR)glad.o $(SRCDIR)HelloWindow.cpp $(CC_FLAGS) -o $(BINDIR)HelloWindow.bin
 
@@ -60,6 +63,9 @@ triangle: glad
 
 strings:
 	$(CC) $(TESTSDIR)strings_and_char_ptrs.cpp -o $()strings_and_char_ptrs -g
+
+arrays:
+	$(CC) $(TESTSDIR)arrays.cpp -o $()arrays.out -g
 
 clean:
 	rm -f $(OBJDIR)*.o *.o *.exe driver $(BINDIR)*.bin
