@@ -1,7 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h> // opens windows and handles keyboard presses
 #include <iostream>
-void framebuffer_size_callback(int width, int height);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
 const char *vertexShaderSource = "#version 330 core\n"
@@ -21,7 +21,7 @@ const int SC_WIDTH = 800;
 int main() {
     using namespace std;
     glfwInit();
-    GLFWWindow *window = glfwCreateWindow(SC_WIDTH, SC_HEIGHT, "MY WINDOW", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(SC_WIDTH, SC_HEIGHT, "MY WINDOW", NULL, NULL);
     if (window == NULL) {
         cout << "error in window creation" << endl;
         glfwTerminate();
@@ -32,17 +32,17 @@ int main() {
 
     // create some shaders
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, vertexShaderSource, NULL);
+    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     glCompileShader(vertexShader); // shaders could go wrong, can call glGetShader function to get error messages
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, fragmentShaderSource, NULL);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
     int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
     glDeleteShader(vertexShader);
-    glDeleteShader(fragentShader);
+    glDeleteShader(fragmentShader);
 
     float vertices[9]{
          0.0f,  1.0f,  0.0f,
@@ -50,7 +50,7 @@ int main() {
          0.5f, -0.5f,  0.0f,
     };
     unsigned int buffer;
-    glGenBuffers(1, buffer);
+    glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer)
     glBufferData(buffer, sizeof(buffer), vertices, GL_STATIC_DRAW);
 
