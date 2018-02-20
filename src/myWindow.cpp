@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h> // opens windows and handles keyboard presses
 #include <iostream>
 void framebuffer_size_callback(int width, int height);
+void processInput(GLFWwindow *window);
 
 const char *vertexShaderSource = "#version 330 core\n"
                                  "layout (location = 0) in vec3 aPos;\n"
@@ -19,8 +20,6 @@ const int SC_HEIGHT = 800;
 const int SC_WIDTH = 800;
 int main() {
     using namespace std;
-
-    // glfw creates an os specific window and makes it the current context
     glfwInit();
     GLFWWindow *window = glfwCreateWindow(SC_WIDTH, SC_HEIGHT, "MY WINDOW", NULL, NULL);
     if (window == NULL) {
@@ -29,11 +28,9 @@ int main() {
         return -1;
     }
     glfwMakeContextCurrent(window);
-    
-    // function called any time windows are resized
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // vertex and fragment shaders
+    // create some shaders
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, vertexShaderSource, NULL);
     glCompileShader(vertexShader); // shaders could go wrong, can call glGetShader function to get error messages
@@ -58,7 +55,7 @@ int main() {
     glBufferData(buffer, sizeof(buffer), vertices, GL_STATIC_DRAW);
 
     // render loop
-    while (!glfwWindowShouldClose(window)){
+    while (!glfwWindowShouldClose(window)) {
         processInput(window);
         glClearColor(0.2, 0.2, 0.2, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -68,12 +65,14 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    glDeleteBuffers(1, buffer);
+    glDeleteBuffers(1, &buffer);
     glfwTerminate();
     return 1;
 }
-
-
+void processInput(GLFWwindow *window) {
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
 void framebuffer_size_callback (int width, int height) {
     glViewport(0,0,width,height);
 }
